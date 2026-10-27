@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Конструктор документов: Отмена судебного приказа за 1 день</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f4f7f9;
+      color: #1e293b;
+    }
+
+    .legal-doc-preview {
+      font-family: 'Noto Serif', 'Times New Roman', Times, serif;
+      line-height: 1.55;
+      color: #0f172a;
+      background: #ffffff;
+    }
+
+    .doc-header-right {
+      margin-left: auto;
+      width: 58%;
+      text-align: left;
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 640px) {
+      .doc-header-right {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only-container {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .legal-doc-preview {
+        font-size: 12pt !important;
+        line-height: 1.5 !important;
+        padding: 10mm 15mm !important;
+      }
+      .doc-header-right {
+        width: 55% !important;
+        font-size: 11pt !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- PIN Access Gate Modal (no-print) -->
+  <div id="pinGateModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/85 backdrop-blur-sm p-4 no-print">
+    <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-md w-full p-6 sm:p-8 text-center space-y-5">
+      <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#1b365d]/10 text-[#1b365d] mx-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">Закрытый доступ к конструктору</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1.5 leading-relaxed">
+          Этот инструмент доступен покупателям курса «Отмена судебного приказа за 1 день». Введите 4-значный PIN-код доступа из файла покупки.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <div class="relative">
+          <input type="password" id="pinInput" maxlength="4" placeholder="••••" class="w-44 text-center tracking-[0.5em] text-2xl font-bold rounded-xl border-2 border-slate-300 py-2.5 focus:outline-none focus:border-[#1b365d] focus:ring-2 focus:ring-[#1b365d]/20 transition">
+        </div>
+        <p id="pinErrorMsg" class="text-xs text-rose-600 font-medium hidden">Неверный PIN-код. Проверьте код в файле покупки.</p>
+        <button type="button" id="btnUnlockPin" class="w-full py-3 rounded-xl text-sm font-semibold bg-[#1b365d] hover:bg-slate-800 text-white shadow-md transition">
+          Открыть конструктор документов
+        </button>
+        <div class="pt-1">
+          <a href="https://web.tribute.tg/p/InO" target="_blank" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600 hover:text-emerald-700 hover:underline">
+            <span>Ещё не приобрели курс? Купить доступ (1 490 ₽)</span>
+            <span>&rarr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 text-xs text-slate-500">
+        Автор курса: юрист Шафиков Раис Мулланурович<br>
+        Поддержка в Telegram: <a href="https://t.me/Shafikov_Law_Bot" target="_blank" class="text-emerald-700 font-semibold hover:underline">@Shafikov_Law_Bot</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Top Header -->
+  <header class="bg-[#1b365d] text-white border-b-4 border-[#10b981] no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <div class="inline-flex flex-wrap items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#10b981]/20 text-[#34d399] mb-1.5">
+          <span>АВТОР КУРСА: ЮРИСТ ШАФИКОВ РАИС МУЛЛАНУРОВИЧ</span>
+          <span>•</span>
+          <span>РЕДАКЦИЯ 2026 ГОДА</span>
+        </div>
+        <h1 class="text-xl sm:text-2xl font-bold tracking-tight">Конструктор процессуальных документов и расчёт сроков</h1>
+        <p class="text-xs sm:text-sm text-slate-300 mt-1">Заполните поля один раз — все 4 документа для суда и приставов сформируются автоматически. Данные никуда не передаются.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <button type="button" id="btnFillDemo" class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium bg-slate-700 hover:bg-slate-600 text-white transition">
+          Заполнить примером
+        </button>
+        <button type="button" id="btnClearForm" class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium bg-rose-900/60 hover:bg-rose-800 text-rose-100 transition">
+          Очистить поля
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+    <!-- Left Column: Form & Calculator (no-print) -->
+    <section class="lg:col-span-5 space-y-6 no-print">
+
+      <!-- Block 1: Procedural Deadline Calculator -->
+      <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="bg-slate-800 text-white px-5 py-3.5 flex items-center justify-between">
+          <div>
+            <h2 class="text-sm font-bold uppercase tracking-wider text-emerald-400">Шаг 1. Калькулятор срока (ст. 107–108, 128 ГПК РФ)</h2>
+            <p class="text-xs text-slate-300 mt-0.5">Считает 10 рабочих дней без учёта выходных и праздников РФ</p>
+          </div>
+        </div>
+        <div class="p-5 space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label for="calcLearnedDate" class="block text-xs font-semibold text-slate-700 mb-1">Дата получения приказа (или когда узнали)</label>
+              <input type="date" id="calcLearnedDate" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600">
+            </div>
+            <div>
+              <label for="calcSubmitDate" class="block text-xs font-semibold text-slate-700 mb-1">Планируемая дата подачи в суд</label>
+              <input type="date" id="calcSubmitDate" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-600">
+            </div>
+          </div>
+
+          <div>
+            <label for="howLearnedSelect" class="block text-xs font-semibold text-slate-700 mb-1">Как именно вы получили приказ или узнали о нём?</label>
+            <select id="howLearnedSelect" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600">
+              <option value="post_in_time">Получил(а) бумажное письмо из суда на почте (в пределах срока)</option>
+              <option value="fssp_gosuslugi">Узнал(а) из уведомления от приставов (на Госуслугах / сайте ФССП)</option>
+              <option value="bank_arrest">Узнал(а) при аресте счёта или списании денег в приложении банка</option>
+              <option value="employer">Узнал(а) на работе (пришло постановление в бухгалтерию)</option>
+              <option value="court_copy">Лично получил(а) копию судебного приказа в канцелярии судебного участка</option>
+            </select>
+          </div>
+
+          <!-- Calculator Result Banner -->
+          <div id="calcResultBox" class="rounded-xl p-4 bg-emerald-50 border border-emerald-200 text-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-800" id="calcStatusBadge">СРОК НЕ ПРОПУЩЕН</span>
+              <span class="text-xs font-medium text-slate-500" id="calcStartInfo">Начало течения: —</span>
+            </div>
+            <div class="text-sm">
+              Крайний день подачи (10-й рабочий день): <strong class="text-base text-slate-900" id="calcDeadlineText">—</strong>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed" id="calcAdviceText">
+              Укажите дату получения копии приказа, чтобы рассчитать точный процессуальный срок по ст. 107–108 ГПК РФ.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Block 2: Input Form for All 4 Documents -->
+      <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="bg-slate-800 text-white px-5 py-3.5">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-emerald-400">Шаг 2. Данные для автозаполнения документов</h2>
+          <p class="text-xs text-slate-300 mt-0.5">Все изменения мгновенно отображаются в тексте справа</p>
+        </div>
+
+        <div class="p-5 space-y-5">
+          <!-- Gender & Basic Role -->
+          <div>
+            <span class="block text-xs font-semibold text-slate-700 mb-1.5">Ваш пол (для правильных окончаний «получил / получила»):</span>
+            <div class="grid grid-cols-2 gap-2.5">
+              <button type="button" id="genderMaleBtn" class="py-2 px-3 rounded-lg text-xs font-semibold border border-emerald-600 bg-emerald-600 text-white transition">
+                Мужской («получил / узнал»)
+              </button>
+              <button type="button" id="genderFemaleBtn" class="py-2 px-3 rounded-lg text-xs font-semibold border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition">
+                Женский («получила / узнала»)
+              </button>
+            </div>
+          </div>
+
+          <!-- Section A: Court & Case -->
+          <div class="pt-3 border-t border-slate-200 space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">1. Судебный участок и реквизиты приказа</h3>
+            <div>
+              <label for="courtName" class="block text-xs font-medium text-slate-700 mb-1">Наименование судебного участка</label>
+              <input type="text" id="courtName" placeholder="Судебный участок № 5 Центрального района г. Примерска" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+            <div>
+              <label for="courtAddress" class="block text-xs font-medium text-slate-700 mb-1">Адрес судебного участка</label>
+              <input type="text" id="courtAddress" placeholder="г. Примерск, ул. Судебная, д. 10" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="caseNumber" class="block text-xs font-medium text-slate-700 mb-1">Номер гражданского дела</label>
+                <input type="text" id="caseNumber" placeholder="2-123/2026" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label for="orderDate" class="block text-xs font-medium text-slate-700 mb-1">Дата вынесения приказа</label>
+                <input type="date" id="orderDate" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+              </div>
+            </div>
+            <div>
+              <label for="debtAmount" class="block text-xs font-medium text-slate-700 mb-1">Сумма взыскания по приказу (руб.)</label>
+              <input type="text" id="debtAmount" placeholder="45 000 руб. 00 коп." class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+          </div>
+
+          <!-- Section B: Debtor (User) -->
+          <div class="pt-3 border-t border-slate-200 space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">2. Ваши данные (Должник)</h3>
+            <div>
+              <label for="debtorFio" class="block text-xs font-medium text-slate-700 mb-1">ФИО полностью (в именительном падеже)</label>
+              <input type="text" id="debtorFio" placeholder="Иванов Иван Иванович" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="debtorBirthDate" class="block text-xs font-medium text-slate-700 mb-1">Дата и место рождения</label>
+                <input type="text" id="debtorBirthDate" placeholder="12.05.1988, г. Примерск" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label for="debtorPhone" class="block text-xs font-medium text-slate-700 mb-1">Телефон для связи</label>
+                <input type="text" id="debtorPhone" placeholder="+7 (900) 000-00-00" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+              </div>
+            </div>
+            <div>
+              <label for="debtorAddress" class="block text-xs font-medium text-slate-700 mb-1">Актуальный адрес проживания (для отправки определения)</label>
+              <input type="text" id="debtorAddress" placeholder="г. Примерск, ул. Ленина, д. 1, кв. 2" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+            <div>
+              <label for="debtorPassport" class="block text-xs font-medium text-slate-700 mb-1">Паспорт или ИНН (идентификатор по ст. 124, 131 ГПК РФ)</label>
+              <input type="text" id="debtorPassport" placeholder="Паспорт серия 0000 № 000000, ИНН 000000000000" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+          </div>
+
+          <!-- Section C: Creditor -->
+          <div class="pt-3 border-t border-slate-200 space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">3. Данные взыскателя (Кредитор / МФО / Банк / УК)</h3>
+            <div>
+              <label for="creditorName" class="block text-xs font-medium text-slate-700 mb-1">Наименование или ФИО взыскателя</label>
+              <input type="text" id="creditorName" placeholder="ООО ПКО «Пример-Коллект» (или ПАО «Пример-Банк»)" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+            <div>
+              <label for="creditorAddress" class="block text-xs font-medium text-slate-700 mb-1">Адрес взыскателя (и ИНН/ОГРН, если известны)</label>
+              <input type="text" id="creditorAddress" placeholder="г. Москва, ул. Образцовая, д. 3, ИНН 7700000000" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+          </div>
+
+          <!-- Section D: Missed Deadline Reason (for Doc 2) -->
+          <div class="pt-3 border-t border-slate-200 space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">4. Для восстановления срока (Документ № 2)</h3>
+            <div>
+              <label for="missedReasonSelect" class="block text-xs font-medium text-slate-700 mb-1">Уважительная причина неполучения письма (ст. 112, ч. 2 ст. 129 ГПК РФ)</label>
+              <select id="missedReasonSelect" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm bg-white">
+                <option value="other_address">Проживаю по другому адресу, почту по старому адресу не получал(а)</option>
+                <option value="no_notice">Почтовое извещение в почтовый ящик не доставлялось (нарушение правил доставки)</option>
+                <option value="trip_hospital">Находился(лась) в командировке / на лечении / в отъезде в период хранения письма</option>
+                <option value="custom_reason">Своя формулировка причины (указать ниже)</option>
+              </select>
+            </div>
+            <div>
+              <label for="missedReasonCustom" class="block text-xs font-medium text-slate-700 mb-1">Уточнение причины и подтверждающий документ</label>
+              <textarea id="missedReasonCustom" rows="2" placeholder="Например: копия договора найма жилого помещения от 10.01.2025, выписка из Госуслуг" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></textarea>
+            </div>
+          </div>
+
+          <!-- Section E: Bailiffs & Turnaround (for Docs 3 & 4) -->
+          <div class="pt-3 border-t border-slate-200 space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">5. После отмены приказа: Приставы и Возврат денег (Документы № 3 и № 4)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="cancelOrderDate" class="block text-xs font-medium text-slate-700 mb-1">Дата определения об отмене приказа</label>
+                <input type="date" id="cancelOrderDate" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label for="withheldAmount" class="block text-xs font-medium text-slate-700 mb-1">Списанная сумма к возврату (руб.)</label>
+                <input type="text" id="withheldAmount" placeholder="18 500 руб. 00 коп." class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+              </div>
+            </div>
+            <div>
+              <label for="fsspDept" class="block text-xs font-medium text-slate-700 mb-1">Отдел судебных приставов (ОСП) и ФИО пристава</label>
+              <input type="text" id="fsspDept" placeholder="ОСП по Центральному району г. Примерска ГУФССП России" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="ipNumber" class="block text-xs font-medium text-slate-700 mb-1">Номер исполнительного производства</label>
+                <input type="text" id="ipNumber" placeholder="12345/26/00000-ИП" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+              </div>
+              <div>
+                <label for="ipDate" class="block text-xs font-medium text-slate-700 mb-1">Дата возбуждения ИП</label>
+                <input type="date" id="ipDate" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+              </div>
+            </div>
+            <div>
+              <label for="bankAccountDetails" class="block text-xs font-medium text-slate-700 mb-1">Банк и номер счёта (с которого сняли арест / куда вернуть деньги с депозита ФССП)</label>
+              <input type="text" id="bankAccountDetails" placeholder="р/с 40817810000000000000 в ПАО «Сбербанк», БИК 044525225" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Right Column: Document Tabs & Live Preview -->
+    <section class="lg:col-span-7 space-y-4 print-only-container">
+
+      <!-- Document Selector Tabs (no-print) -->
+      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-2 no-print">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" role="tablist">
+          <button type="button" id="tabDoc1" data-doc="doc1" class="doc-tab-btn flex items-start gap-2.5 p-3 rounded-lg text-left transition bg-[#1b365d] text-white">
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold bg-emerald-500 text-white shrink-0 mt-0.5">1</span>
+            <div>
+              <div class="text-xs font-bold leading-snug">Возражения на судебный приказ</div>
+              <div class="text-[11px] opacity-80 mt-0.5">Ст. 128, 129 ГПК РФ (основной документ)</div>
+            </div>
+          </button>
+
+          <button type="button" id="tabDoc2" data-doc="doc2" class="doc-tab-btn flex items-start gap-2.5 p-3 rounded-lg text-left transition bg-slate-50 hover:bg-slate-100 text-slate-800">
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold bg-amber-600 text-white shrink-0 mt-0.5">2</span>
+            <div>
+              <div class="text-xs font-bold leading-snug">Ходатайство о восстановлении срока</div>
+              <div class="text-[11px] opacity-75 mt-0.5">Ст. 112, ч. 2 ст. 129 ГПК РФ (если прошло &gt;10 дней)</div>
+            </div>
+          </button>
+
+          <button type="button" id="tabDoc3" data-doc="doc3" class="doc-tab-btn flex items-start gap-2.5 p-3 rounded-lg text-left transition bg-slate-50 hover:bg-slate-100 text-slate-800">
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold bg-sky-600 text-white shrink-0 mt-0.5">3</span>
+            <div>
+              <div class="text-xs font-bold leading-snug">Заявление приставу о прекращении ИП</div>
+              <div class="text-[11px] opacity-75 mt-0.5">П. 4 ч. 2 ст. 43, ст. 44 ФЗ № 229-ФЗ (снять арест)</div>
+            </div>
+          </button>
+
+          <button type="button" id="tabDoc4" data-doc="doc4" class="doc-tab-btn flex items-start gap-2.5 p-3 rounded-lg text-left transition bg-slate-50 hover:bg-slate-100 text-slate-800">
+            <span class="inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold bg-purple-600 text-white shrink-0 mt-0.5">4</span>
+            <div>
+              <div class="text-xs font-bold leading-snug">Заявление о повороте исполнения приказа</div>
+              <div class="text-[11px] opacity-75 mt-0.5">Ст. 443, 444 ГПК РФ, п. 35 Пленума № 62 (возврат денег)</div>
+            </div>
+          </button>
+        </div>
+
+        <!-- Action Toolbar -->
+        <div class="mt-3 pt-3 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 px-1">
+          <div class="text-xs text-slate-600" id="activeDocHint">
+            Документ готов к копированию, скачиванию или печати в PDF.
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button type="button" id="btnCopyDoc" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white transition">
+              Скопировать текст
+            </button>
+            <button type="button" id="btnDownloadTxt" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-900 text-white transition">
+              Скачать .TXT / .DOC
+            </button>
+            <button type="button" id="btnPrintDoc" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#1b365d] hover:bg-slate-800 text-white transition">
+              Печать / Сохранить в PDF
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Notification (no-print) -->
+      <div id="toastBanner" class="hidden rounded-lg bg-emerald-800 text-white px-4 py-2.5 text-xs font-medium shadow-md no-print">
+        Текст документа скопирован в буфер обмена!
+      </div>
+
+      <!-- Legal Warning Note for Current Document (no-print) -->
+      <div id="legalTipBox" class="rounded-xl bg-amber-50 border border-amber-200 p-4 text-xs text-amber-950 space-y-1 no-print">
+        <div class="font-bold uppercase tracking-wider text-amber-800" id="legalTipTitle">Профессиональная памятка юриста</div>
+        <p id="legalTipBody" class="leading-relaxed">
+          Для отмены судебного приказа по ст. 129 ГПК РФ и п. 31 Постановления Пленума ВС РФ № 62 достаточно заявить о своём несогласии. Не расписывайте в возражениях подробную историю кредита, чтобы не давать взыскателю лишних аргументов до возможного иска.
+        </p>
+      </div>
+
+      <!-- Live Paper Sheet -->
+      <div class="bg-white rounded-xl shadow-md border border-slate-200 p-6 sm:p-10 legal-doc-preview print-only-container" id="paperSheet">
+        <div id="docRenderArea"></div>
+      </div>
+
+    </section>
+
+
+    <!-- Bottom Full-Width Section: Automated Legal Request Intake & Triage (no-print) -->
+    <section class="lg:col-span-12 mt-2 no-print" id="intakeSection">
+      <div class="bg-white rounded-xl shadow-sm border-2 border-[#1b365d]/15 overflow-hidden">
+        <div class="bg-[#1b365d] text-white px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-emerald-400">Автоматизированный приём обращений • Юрист Шафиков Раис Мулланурович</span>
+            <h2 class="text-base sm:text-lg font-bold mt-0.5">Нужна помощь со сложным случаем или кредитор уже подал обычный иск в суд?</h2>
+          </div>
+          <span class="text-xs bg-white/10 px-3 py-1.5 rounded-lg text-slate-200 shrink-0">Система первичной диагностики заявки</span>
+        </div>
+
+        <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <div class="lg:col-span-6 space-y-4">
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Выберите вашу ситуацию ниже — система автоматически соберёт введённые вами данные по делу в структурированную <strong>Карточку правовой заявки</strong>. Вам не придётся пересказывать всё с нуля: скопируйте готовую карточку и отправьте её в приёмный бот или мессенджер юриста.
+            </p>
+
+            <div>
+              <label for="intakeTopicSelect" class="block text-xs font-semibold text-slate-700 mb-1">По какому вопросу нужна индивидуальная юридическая помощь?</label>
+              <select id="intakeTopicSelect" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600">
+                <option value="Кредитор подал исковое заявление после отмены судебного приказа (нужны возражения на иск / расчёт СИД и ст. 333 ГК РФ)">Кредитор подал исковое заявление после отмены приказа (возражения на иск)</option>
+                <option value="Суд отказал в восстановлении пропущенного срока (нужна частная жалоба)">Суд отказал в восстановлении срока на отмену приказа (частная жалоба)</option>
+                <option value="Взыскатель подал частную жалобу на определение об отмене судебного приказа (ч. 2 ст. 129 ГПК РФ)">Взыскатель подал частную жалобу на отмену приказа (ч. 2 ст. 129 ГПК РФ)</option>
+                <option value="Сложный возврат уже списанных денег / приставы не прекращают ИП">Сложный возврат списанных денег / бездействие судебных приставов</option>
+                <option value="Комплексный разбор кредитных долгов, расписок или семейного/наследственного спора">Комплексный разбор долгов, расписок или семейного/наследственного спора</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="intakeUrgencySelect" class="block text-xs font-semibold text-slate-700 mb-1">Срочность (процессуальный срок)</label>
+                <select id="intakeUrgencySelect" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-600">
+                  <option value="СРОЧНО (назначено заседание / осталось менее 5 дней)">СРОЧНО (осталось менее 5 дней / назначен суд)</option>
+                  <option value="ПЛАНОВО (получил документы, есть время на подготовку)">ПЛАНОВО (есть запас времени на подготовку)</option>
+                  <option value="КОНСУЛЬТАЦИЯ (нужна проверка документов и стратегии)">КОНСУЛЬТАЦИЯ (проверка документов и стратегии)</option>
+                </select>
+              </div>
+              <div>
+                <label for="intakePreferredContact" class="block text-xs font-semibold text-slate-700 mb-1">Куда вам удобнее получить ответ?</label>
+                <input type="text" id="intakePreferredContact" placeholder="Telegram @username / WhatsApp / Телефон" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm">
+              </div>
+            </div>
+
+            <div>
+              <label for="intakeComment" class="block text-xs font-semibold text-slate-700 mb-1">Краткое описание ситуации (когда брали кредит, когда был последний платёж)</label>
+              <textarea id="intakeComment" rows="2" placeholder="Например: кредит 2021 года, последний платёж в мае 2022 г., банк требует 120 000 руб. с пенями..." class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></textarea>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 bg-slate-50 rounded-xl border border-slate-200 p-4 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-[#1b365d]">Сформированная анкета заявки (автосборка)</span>
+              <span class="text-[11px] font-medium text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Готова к отправке</span>
+            </div>
+            <pre id="intakePreviewBox" class="text-xs font-mono bg-white border border-slate-200 rounded-lg p-3.5 whitespace-pre-wrap text-slate-800 leading-relaxed overflow-x-auto"></pre>
+            <div class="flex flex-wrap items-center gap-2.5 pt-1">
+              <button type="button" id="btnCopyIntake" class="px-4 py-2 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white transition">
+                Скопировать карточку заявки
+              </button>
+              <button type="button" id="btnOpenTgBot" class="px-4 py-2 rounded-lg text-xs font-semibold bg-sky-600 hover:bg-sky-700 text-white transition flex items-center gap-1.5">
+                <span>Перейти в Telegram-бот</span>
+                <span class="text-[10px] opacity-80">(отправить анкету)</span>
+              </button>
+              <button type="button" id="btnDownloadIntake" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-900 text-white transition">
+                Скачать .TXT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Official Russian non-working holidays (fixed dates + key holiday periods 2025-2027)
+    const RU_FIXED_HOLIDAYS = [
+      '01-01', '01-02', '01-03', '01-04', '01-05', '01-06', '01-07', '01-08',
+      '02-23', '03-08', '05-01', '05-09', '06-12', '11-04'
+    ];
+
+    const state = {
+      activeDoc: 'doc1',
+      gender: 'male',
+      calcLearnedDate: '2026-10-19',
+      calcSubmitDate: '2026-10-26',
+      howLearned: 'post_in_time',
+      courtName: 'Судебный участок № 5 Центрального судебного района г. Примерска',
+      courtAddress: '450000, г. Примерск, ул. Судебная, д. 10',
+      caseNumber: '2-1245/2026',
+      orderDate: '2026-10-05',
+      debtAmount: '48 500 руб. 00 коп.',
+      debtorFio: 'Иванов Иван Иванович',
+      debtorBirthDate: '15.04.1988, гор. Примерск',
+      debtorPhone: '+7 (900) 123-45-67',
+      debtorAddress: '450000, г. Примерск, ул. Ленина, д. 15, кв. 42',
+      debtorPassport: 'паспорт серия 80 08 № 123456, ИНН 027400000000',
+      creditorName: 'ООО ПКО «Пример-Финанс»',
+      creditorAddress: '125009, г. Москва, ул. Образцовая, д. 12, оф. 301, ИНН 7701234567',
+      missedReasonSelect: 'other_address',
+      missedReasonCustom: 'копия договора найма жилого помещения от 10.01.2026, скриншот уведомления с портала Госуслуг о возбуждении исполнительного производства',
+      cancelOrderDate: '2026-10-27',
+      withheldAmount: '14 200 руб. 00 коп.',
+      fsspDept: 'ОСП по Центральному району г. Примерска ГУФССП России',
+      ipNumber: '98765/26/02001-ИП',
+      ipDate: '2026-10-16',
+      bankAccountDetails: 'р/с 40817810500001234567 в ПАО «Сбербанк», БИК 044525225',
+      intakeTopic: 'Кредитор подал исковое заявление после отмены судебного приказа (нужны возражения на иск / расчёт СИД и ст. 333 ГК РФ)',
+      intakeUrgency: 'СРОЧНО (назначено заседание / осталось менее 5 дней)',
+      intakePreferredContact: 'Telegram / Телефон из анкеты',
+      intakeComment: 'Нужна проверка срока исковой давности (ст. 196, 199 ГК РФ) и снижение неустойки по ст. 333 ГК РФ.'
+    };
+
+    function formatRuDate(isoStr) {
+      if (!isoStr) return '«___» __________ 202__ г.';
+      const parts = isoStr.split('-');
+      if (parts.length !== 3) return isoStr;
+      return `${parts[2]}.${parts[1]}.${parts[0]} г.`;
+    }
+
+    function shortFio(fullFio) {
+      if (!fullFio || !fullFio.trim()) return '________________';
+      const parts = fullFio.trim().split(/\s+/);
+      if (parts.length === 1) return parts[0];
+      if (parts.length === 2) return `${parts[0]} ${parts[1][0]}.`;
+      return `${parts[0]} ${parts[1][0]}.${parts[2][0]}.`;
+    }
+
+    function isNonWorkingDay(dateObj) {
+      const dayOfWeek = dateObj.getDay();
+      if (dayOfWeek === 0 || dayOfWeek === 6) return true;
+      const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const dd = String(dateObj.getDate()).padStart(2, '0');
+      return RU_FIXED_HOLIDAYS.includes(`${mm}-${dd}`);
+    }
+
+    // Art. 107 part 3 & Art. 108 GPK RF: 10 working days starting next day after receipt
+    function calculate10WorkingDays(learnedIso, submitIso) {
+      if (!learnedIso) return null;
+      const startEvent = new Date(learnedIso + 'T12:00:00');
+      if (isNaN(startEvent.getTime())) return null;
+
+      const firstDay = new Date(startEvent);
+      firstDay.setDate(firstDay.getDate() + 1);
+
+      let current = new Date(firstDay);
+      let workingDaysCount = 0;
+
+      while (workingDaysCount < 10) {
+        if (!isNonWorkingDay(current)) {
+          workingDaysCount++;
+        }
+        if (workingDaysCount < 10) {
+          current.setDate(current.getDate() + 1);
+        }
+      }
+
+      // Ensure final day is working day (Art. 108 part 2 GPK RF)
+      while (isNonWorkingDay(current)) {
+        current.setDate(current.getDate() + 1);
+      }
+
+      const deadlineIso = current.toISOString().slice(0, 10);
+      const firstDayIso = firstDay.toISOString().slice(0, 10);
+
+      let isMissed = false;
+      let daysDiff = 0;
+      if (submitIso) {
+        const subDate = new Date(submitIso + 'T12:00:00');
+        const endDate = new Date(deadlineIso + 'T12:00:00');
+        isMissed = subDate > endDate;
+        daysDiff = Math.round((endDate - subDate) / (1000 * 60 * 60 * 24));
+      }
+
+      return {
+        firstDayFormatted: formatRuDate(firstDayIso),
+        deadlineFormatted: formatRuDate(deadlineIso),
+        isMissed,
+        daysDiff
+      };
+    }
+
+    function syncInputsFromState() {
+      document.getElementById('calcLearnedDate').value = state.calcLearnedDate;
+      document.getElementById('calcSubmitDate').value = state.calcSubmitDate;
+      document.getElementById('howLearnedSelect').value = state.howLearned;
+      document.getElementById('courtName').value = state.courtName;
+      document.getElementById('courtAddress').value = state.courtAddress;
+      document.getElementById('caseNumber').value = state.caseNumber;
+      document.getElementById('orderDate').value = state.orderDate;
+      document.getElementById('debtAmount').value = state.debtAmount;
+      document.getElementById('debtorFio').value = state.debtorFio;
+      document.getElementById('debtorBirthDate').value = state.debtorBirthDate;
+      document.getElementById('debtorPhone').value = state.debtorPhone;
+      document.getElementById('debtorAddress').value = state.debtorAddress;
+      document.getElementById('debtorPassport').value = state.debtorPassport;
+      document.getElementById('creditorName').value = state.creditorName;
+      document.getElementById('creditorAddress').value = state.creditorAddress;
+      document.getElementById('missedReasonSelect').value = state.missedReasonSelect;
+      document.getElementById('missedReasonCustom').value = state.missedReasonCustom;
+      document.getElementById('cancelOrderDate').value = state.cancelOrderDate;
+      document.getElementById('withheldAmount').value = state.withheldAmount;
+      document.getElementById('fsspDept').value = state.fsspDept;
+      document.getElementById('ipNumber').value = state.ipNumber;
+      document.getElementById('ipDate').value = state.ipDate;
+      document.getElementById('bankAccountDetails').value = state.bankAccountDetails;
+      document.getElementById('intakeTopicSelect').value = state.intakeTopic;
+      document.getElementById('intakeUrgencySelect').value = state.intakeUrgency;
+      document.getElementById('intakePreferredContact').value = state.intakePreferredContact;
+      document.getElementById('intakeComment').value = state.intakeComment;
+    }
+
+    function buildIntakeText() {
+      const res = calculate10WorkingDays(state.calcLearnedDate, state.calcSubmitDate);
+      const deadlineStatus = res ? (res.isMissed ? `Пропущен (крайний день был ${res.deadlineFormatted})` : `В пределах срока (до ${res.deadlineFormatted})`) : 'Не указан';
+      return [
+        '=== ЗАЯВКА ЮРИСТУ: ШАФИКОВ РАИС МУЛЛАНУРОВИЧ ===',
+        `1. Тема обращения: ${state.intakeTopic || 'Консультация по судебному спору'}`,
+        `2. Срочность: ${state.intakeUrgency || 'Стандартная'}`,
+        `3. Заявитель: ${state.debtorFio || 'Не указано'} (${state.debtorPhone || 'тел. не указан'})`,
+        `4. Куда ответить: ${state.intakePreferredContact || state.debtorPhone || 'По телефону'}`,
+        `5. Суд и номер дела: ${state.courtName || 'Не указан'}, дело № ${state.caseNumber || '—'} от ${formatRuDate(state.orderDate)}`,
+        `6. Взыскатель и сумма: ${state.creditorName || '—'} | Сумма: ${state.debtAmount || '—'} (удержано: ${state.withheldAmount || '0 руб.'})`,
+        `7. Статус 10-дневного срока: ${deadlineStatus}`,
+        `8. Детали ситуации: ${state.intakeComment || 'Дополнительных комментариев нет.'}`
+      ].join('\n');
+    }
+
+    function updateGenderButtons() {
+      const maleBtn = document.getElementById('genderMaleBtn');
+      const femaleBtn = document.getElementById('genderFemaleBtn');
+      if (state.gender === 'male') {
+        maleBtn.className = 'py-2 px-3 rounded-lg text-xs font-semibold border border-emerald-600 bg-emerald-600 text-white transition';
+        femaleBtn.className = 'py-2 px-3 rounded-lg text-xs font-semibold border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition';
+      } else {
+        femaleBtn.className = 'py-2 px-3 rounded-lg text-xs font-semibold border border-emerald-600 bg-emerald-600 text-white transition';
+        maleBtn.className = 'py-2 px-3 rounded-lg text-xs font-semibold border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition';
+      }
+    }
+
+    function updateCalculatorUI() {
+      const res = calculate10WorkingDays(state.calcLearnedDate, state.calcSubmitDate);
+      const box = document.getElementById('calcResultBox');
+      const badge = document.getElementById('calcStatusBadge');
+      const startInfo = document.getElementById('calcStartInfo');
+      const deadlineText = document.getElementById('calcDeadlineText');
+      const adviceText = document.getElementById('calcAdviceText');
+
+      if (!res) {
+        box.className = 'rounded-xl p-4 bg-slate-100 border border-slate-300 text-slate-800 space-y-2';
+        badge.textContent = 'ВВЕДИТЕ ДАТУ';
+        startInfo.textContent = 'Начало течения: —';
+        deadlineText.textContent = '—';
+        adviceText.textContent = 'Укажите дату получения копии приказа или дату, когда узнали о нём.';
+        return;
+      }
+
+      startInfo.textContent = `1-й день срока: ${res.firstDayFormatted}`;
+      deadlineText.textContent = res.deadlineFormatted;
+
+      const learnedDelayed = state.howLearned !== 'post_in_time';
+
+      if (!res.isMissed && !learnedDelayed) {
+        box.className = 'rounded-xl p-4 bg-emerald-50 border border-emerald-300 text-slate-800 space-y-2';
+        badge.className = 'text-xs font-bold uppercase tracking-wider text-emerald-800';
+        badge.textContent = `СРОК В ПОРЯДКЕ (В ЗАПАСЕ ${res.daysDiff} ДН.)`;
+        adviceText.textContent = 'По ч. 3 ст. 107 ГПК РФ выходные и праздничные дни не включаются в 10-дневный срок. Вам достаточно подать только Документ № 1 (Возражения на судебный приказ) до 23:59 крайнего дня.';
+      } else if (!res.isMissed && learnedDelayed) {
+        box.className = 'rounded-xl p-4 bg-amber-50 border border-amber-300 text-slate-800 space-y-2';
+        badge.className = 'text-xs font-bold uppercase tracking-wider text-amber-800';
+        badge.textContent = 'УЗНАЛИ НЕ ПО ПОЧТЕ — НУЖНЫ ДОКУМЕНТЫ № 1 И № 2';
+        adviceText.textContent = 'Вы укладываетесь в 10 рабочих дней с момента, когда узнали о приказе (п. 33 Пленума ВС РФ № 62), но для суда формальный почтовый срок уже прошёл. Обязательно подавайте Возражения (№ 1) + Ходатайство о восстановлении срока (№ 2) одновременно!';
+      } else {
+        box.className = 'rounded-xl p-4 bg-rose-50 border border-rose-300 text-slate-800 space-y-2';
+        badge.className = 'text-xs font-bold uppercase tracking-wider text-rose-800';
+        badge.textContent = 'СРОК ПРОПУЩЕН — ПОДАВАЙТЕ ДОКУМЕНТЫ № 1 + № 2';
+        adviceText.textContent = 'С даты получения/узнавания прошло больше 10 рабочих дней. Чтобы суд не вернул возражения по ч. 2 ст. 129 ГПК РФ, подавайте Возражения (№ 1) вместе с Ходатайством о восстановлении срока (№ 2) и доказательствами уважительной причины.';
+      }
+    }
+
+    function getVerb(maleWord, femaleWord) {
+      return state.gender === 'female' ? femaleWord : maleWord;
+    }
+
+    function buildDocHTML(docId) {
+      const courtName = state.courtName || 'Судебный участок № ___ г. _________';
+      const courtAddress = state.courtAddress || '___________________________';
+      const debtorFio = state.debtorFio || '___________________________';
+      const debtorBirthDate = state.debtorBirthDate || '___________________________';
+      const debtorAddress = state.debtorAddress || '___________________________';
+      const debtorPhone = state.debtorPhone || '___________________________';
+      const debtorPassport = state.debtorPassport || 'паспорт серия ____ № ______, ИНН ____________';
+      const creditorName = state.creditorName || '___________________________';
+      const creditorAddress = state.creditorAddress || '___________________________';
+      const caseNumber = state.caseNumber || '2-____/202__';
+      const orderDateStr = formatRuDate(state.orderDate);
+      const learnedDateStr = formatRuDate(state.calcLearnedDate);
+      const submitDateStr = formatRuDate(state.calcSubmitDate);
+      const cancelDateStr = formatRuDate(state.cancelOrderDate);
+      const debtAmount = state.debtAmount || '________ руб.';
+      const withheldAmount = state.withheldAmount || '________ руб.';
+      const fsspDept = state.fsspDept || 'Отдел судебных приставов по _______________';
+      const ipNumber = state.ipNumber || '________/26/_____-ИП';
+      const ipDateStr = formatRuDate(state.ipDate);
+      const bankAccountDetails = state.bankAccountDetails || 'р/с ___________________________ в банке _______________';
+
+      const poluchil = getVerb('получил', 'получила');
+      const uznal = getVerb('узнал', 'узнала');
+      const soglasen = getVerb('согласен', 'согласна');
+      const prozhival = getVerb('проживал', 'проживала');
+      const nahodilsya = getVerb('находился', 'находилась');
+
+      let howLearnedPhrase = `Копию указанного судебного приказа я ${poluchil} по почте ${learnedDateStr}`;
+      if (state.howLearned === 'fssp_gosuslugi') {
+        howLearnedPhrase = `Копию судебного приказа по почте я не получал(а), о его вынесении ${uznal} только ${learnedDateStr} из уведомления судебного пристава-исполнителя на портале Госуслуг (сайте ФССП России)`;
+      } else if (state.howLearned === 'bank_arrest') {
+        howLearnedPhrase = `Копию судебного приказа по почте я не получал(а), о его вынесении ${uznal} только ${learnedDateStr} при аресте банковского счёта / списании средств в мобильном приложении банка`;
+      } else if (state.howLearned === 'employer') {
+        howLearnedPhrase = `Копию судебного приказа по почте я не получал(а), о его вынесении ${uznal} только ${learnedDateStr} от работодателя при поступлении постановления об удержании из заработной платы`;
+      } else if (state.howLearned === 'court_copy') {
+        howLearnedPhrase = `Копию указанного судебного приказа я ${poluchil} нарочно в канцелярии судебного участка ${learnedDateStr}`;
+      }
+
+      if (docId === 'doc1') {
+        return `
+          <div class="doc-header-right mb-8">
+            <p class="font-bold">Мировому судье: ${courtName}</p>
+            <p class="mb-2">Адрес суда: ${courtAddress}</p>
+            <p class="font-semibold">От должника: ${debtorFio}</p>
+            <p>Дата и место рождения: ${debtorBirthDate}</p>
+            <p>Адрес проживания: ${debtorAddress}</p>
+            <p>Идентификатор: ${debtorPassport}</p>
+            <p class="mb-2">Телефон: ${debtorPhone}</p>
+            <p class="font-semibold">Взыскатель: ${creditorName}</p>
+            <p class="mb-2">Адрес: ${creditorAddress}</p>
+            <p class="font-bold">Дело № ${caseNumber}</p>
+          </div>
+
+          <h2 class="text-center font-bold text-lg uppercase tracking-wide mb-6">
+            ВОЗРАЖЕНИЯ<br>
+            <span class="text-sm font-normal normal-case">относительно исполнения судебного приказа (в порядке ст. 128, 129 ГПК РФ)</span>
+          </h2>
+
+          <div class="space-y-4 text-justify">
+            <p>
+              ${orderDateStr} мировым судьёй (${courtName}) по гражданскому делу № ${caseNumber} был вынесен судебный приказ о взыскании с меня, ${debtorFio}, в пользу взыскателя ${creditorName} денежных средств в размере ${debtAmount}.
+            </p>
+            <p>
+              ${howLearnedPhrase}.
+            </p>
+            <p>
+              С вынесенным судебным приказом от ${orderDateStr} по делу № ${caseNumber} и с заявленными требованиями взыскателя я категорически <strong>не ${soglasen}</strong>, считаю сумму задолженности необоснованной и подлежащей проверке в порядке искового производства.
+            </p>
+            <p>
+              В соответствии со ст. 128, ч. 1 ст. 129 Гражданского процессуального кодекса РФ, а также п. 31 Постановления Пленума Верховного Суда РФ от 27.12.2016 № 62, при поступлении в установленный срок возражений должника относительно исполнения судебного приказа судья отменяет судебный приказ. При этом возражения могут содержать только указание на несогласие должника с вынесенным судебным приказом.
+            </p>
+            <p class="font-bold uppercase mt-4">На основании изложенного, руководствуясь ст. 128, 129 ГПК РФ, ПРОШУ СУД:</p>
+            <ol class="list-decimal pl-6 space-y-1.5">
+              <li>Отменить судебный приказ от ${orderDateStr} по делу № ${caseNumber} о взыскании с ${debtorFio} в пользу ${creditorName} денежных средств в размере ${debtAmount}.</li>
+              <li>Копию определения об отмене судебного приказа в установленный ч. 1 ст. 129 ГПК РФ трёхдневный срок направить мне по адресу: ${debtorAddress}.</li>
+            </ol>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-200 text-sm">
+            <p class="font-bold mb-1.5">Приложения:</p>
+            <ol class="list-decimal pl-6 space-y-1">
+              <li>Копия паспорта заявителя (должника).</li>
+              <li>Копия судебного приказа либо документа, подтверждающего дату получения сведений о нём (при наличии).</li>
+              ${state.howLearned !== 'post_in_time' ? '<li>Ходатайство о восстановлении пропущенного процессуального срока с подтверждающими документами.</li>' : ''}
+            </ol>
+          </div>
+
+          <div class="mt-10 flex items-center justify-between text-sm">
+            <div>Дата подачи: <strong>${submitDateStr}</strong></div>
+            <div>Подпись: _______________ / <strong>${shortFio(debtorFio)}</strong> /</div>
+          </div>
+        `;
+      }
+
+      if (docId === 'doc2') {
+        let reasonParagraph = '';
+        if (state.missedReasonSelect === 'other_address') {
+          reasonParagraph = `Копия судебного приказа направлялась по адресу, по которому я фактически не ${prozhival}, в связи с чем я физически не имел(а) возможности получить судебную почтовую корреспонденцию в 7-дневный срок хранения. Фактически я проживаю по адресу: ${debtorAddress}.`;
+        } else if (state.missedReasonSelect === 'no_notice') {
+          reasonParagraph = `Почтовое извещение о поступлении судебного письма в мой почтовый ящик не доставлялось (были нарушены правила доставки судебной корреспонденции), вследствие чего я не знал(а) и не мог(ла) знать о вынесении судебного приказа.`;
+        } else if (state.missedReasonSelect === 'trip_hospital') {
+          reasonParagraph = `В период направления и 7-дневного хранения судебной корреспонденции в отделении почтовой связи я ${nahodilsya} вне места постоянного жительства (в служебной командировке / на стационарном лечении / в отъезде), в связи с чем по независящим от меня причинам не мог(ла) получить письмо.`;
+        } else {
+          reasonParagraph = `Копию судебного приказа в установленный срок я не ${poluchil} по независящим от меня уважительным причинам: ${state.missedReasonCustom || '_________________________________'}.`;
+        }
+
+        return `
+          <div class="doc-header-right mb-8">
+            <p class="font-bold">Мировому судье: ${courtName}</p>
+            <p class="mb-2">Адрес суда: ${courtAddress}</p>
+            <p class="font-semibold">От должника: ${debtorFio}</p>
+            <p>Дата и место рождения: ${debtorBirthDate}</p>
+            <p>Адрес проживания: ${debtorAddress}</p>
+            <p>Идентификатор: ${debtorPassport}</p>
+            <p class="mb-2">Телефон: ${debtorPhone}</p>
+            <p class="font-semibold">Взыскатель: ${creditorName}</p>
+            <p class="mb-2">Адрес: ${creditorAddress}</p>
+            <p class="font-bold">Дело № ${caseNumber}</p>
+          </div>
+
+          <h2 class="text-center font-bold text-lg uppercase tracking-wide mb-6">
+            ХОДАТАЙСТВО (ЗАЯВЛЕНИЕ)<br>
+            <span class="text-sm font-normal normal-case">о восстановлении пропущенного процессуального срока подачи возражений относительно исполнения судебного приказа (в порядке ст. 112, ч. 2 ст. 129 ГПК РФ)</span>
+          </h2>
+
+          <div class="space-y-4 text-justify">
+            <p>
+              ${orderDateStr} мировым судьёй (${courtName}) по делу № ${caseNumber} был вынесен судебный приказ о взыскании с меня, ${debtorFio}, в пользу ${creditorName} задолженности в размере ${debtAmount}.
+            </p>
+            <p>
+              ${howLearnedPhrase}.
+            </p>
+            <p>
+              ${reasonParagraph}
+            </p>
+            <p>
+              Уважительность причин неполучения судебной корреспонденции и соблюдение мной 10-дневного срока с момента, когда мне стало известно о судебном приказе, подтверждаются прилагаемыми документами: ${state.missedReasonCustom || 'документами, приложенными к настоящему ходатайству'}.
+            </p>
+            <p>
+              В соответствии с ч. 1, 3 ст. 112, ч. 2 ст. 129 ГПК РФ, а также п. 33, 34 Постановления Пленума Верховного Суда РФ от 27.12.2016 № 62, в случае пропуска десятидневного срока для представления возражений относительно исполнения судебного приказа должник вправе представить возражения и за пределами указанного срока, обосновав невозможность их представления по причинам, не зависящим от него, не позднее десяти рабочих дней с момента прекращения данных обстоятельств (получения сведений о приказе). Одновременно с настоящим ходатайством мной подаются письменные возражения относительно исполнения судебного приказа.
+            </p>
+            <p class="font-bold uppercase mt-4">На основании изложенного, руководствуясь ст. 112, ч. 2 ст. 129 ГПК РФ, п. 33–34 Постановления Пленума ВС РФ № 62, ПРОШУ СУД:</p>
+            <ol class="list-decimal pl-6 space-y-1.5">
+              <li>Признать причины пропуска процессуального срока уважительными и восстановить мне, ${debtorFio}, процессуальный срок для подачи возражений относительно исполнения судебного приказа от ${orderDateStr} по делу № ${caseNumber}.</li>
+              <li>Принять к рассмотрению прилагаемые возражения и отменить судебный приказ от ${orderDateStr} по делу № ${caseNumber}.</li>
+            </ol>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-200 text-sm">
+            <p class="font-bold mb-1.5">Приложения:</p>
+            <ol class="list-decimal pl-6 space-y-1">
+              <li>Возражения относительно исполнения судебного приказа от ${submitDateStr}.</li>
+              <li>Доказательства уважительности причин пропуска срока и даты получения сведений о приказе (${state.missedReasonCustom || 'выписка с Госуслуг / банка / справка / договор'}).</li>
+              <li>Копия паспорта заявителя.</li>
+            </ol>
+          </div>
+
+          <div class="mt-10 flex items-center justify-between text-sm">
+            <div>Дата подачи: <strong>${submitDateStr}</strong></div>
+            <div>Подпись: _______________ / <strong>${shortFio(debtorFio)}</strong> /</div>
+          </div>
+        `;
+      }
+
+      if (docId === 'doc3') {
+        return `
+          <div class="doc-header-right mb-8">
+            <p class="font-bold">В ${fsspDept}</p>
+            <p class="mb-2">Судебному приставу-исполнителю</p>
+            <p class="font-semibold">От должника: ${debtorFio}</p>
+            <p>Дата рождения: ${debtorBirthDate}</p>
+            <p>Адрес проживания: ${debtorAddress}</p>
+            <p>Идентификатор: ${debtorPassport}</p>
+            <p class="mb-2">Телефон: ${debtorPhone}</p>
+            <p class="font-semibold">Взыскатель: ${creditorName}</p>
+            <p class="font-bold mt-1">Исполнительное производство № ${ipNumber} от ${ipDateStr}</p>
+          </div>
+
+          <h2 class="text-center font-bold text-lg uppercase tracking-wide mb-6">
+            ЗАЯВЛЕНИЕ<br>
+            <span class="text-sm font-normal normal-case">о прекращении исполнительного производства и отмене мер принудительного исполнения (в порядке п. 4 ч. 2 ст. 43, ст. 44 ФЗ № 229-ФЗ)</span>
+          </h2>
+
+          <div class="space-y-4 text-justify">
+            <p>
+              В производстве ${fsspDept} находится исполнительное производство № ${ipNumber}, возбужденное ${ipDateStr} на основании судебного приказа от ${orderDateStr} по делу № ${caseNumber}, выданного мировым судьёй (${courtName}), о взыскании с меня, ${debtorFio}, в пользу ${creditorName} задолженности в размере ${debtAmount}.
+            </p>
+            <p>
+              Определением мирового судьи (${courtName}) от ${cancelDateStr} по делу № ${caseNumber} указанный судебный приказ от ${orderDateStr} <strong>отменён</strong> в полном объёме. Копия определения суда об отмене судебного приказа прилагается к настоящему заявлению.
+            </p>
+            <p>
+              Согласно <strong>п. 4 ч. 2 ст. 43 Федерального закона от 02.10.2007 № 229-ФЗ «Об исполнительном производстве»</strong> исполнительное производство прекращается судебным приставом-исполнителем в случае отмены судебного акта, на основании которого выдан исполнительный документ.
+            </p>
+            <p>
+              В силу <strong>ч. 1 и ч. 2 ст. 44 ФЗ № 229-ФЗ</strong> в постановлении о прекращении исполнительного производства судебный пристав-исполнитель отменяет все назначенные им меры принудительного исполнения, в том числе арест имущества и банковских счетов, а также установленные для должника ограничения. При прекращении исполнительного производства по основанию п. 4 ч. 2 ст. 43 ФЗ № 229-ФЗ исполнительский сбор взысканию не подлежит.
+            </p>
+            <p class="font-bold uppercase mt-4">На основании изложенного, руководствуясь п. 4 ч. 2 ст. 43, ч. 1, 2, 4 ст. 44, ст. 45 ФЗ от 02.10.2007 № 229-ФЗ «Об исполнительном производстве», ПРОШУ:</p>
+            <ol class="list-decimal pl-6 space-y-1.5">
+              <li>В установленный ч. 4 ст. 45 ФЗ № 229-ФЗ трёхдневный срок прекратить исполнительное производство № ${ipNumber} от ${ipDateStr} в связи с отменой судебного приказа.</li>
+              <li>Отменить все назначенные меры принудительного исполнения, включая обращения взыскания на денежные средства и заработную плату, снять аресты с моих банковских счетов (${bankAccountDetails}), отменить временные ограничения и постановление о взыскании исполнительского сбора.</li>
+              <li>В случае нахождения удержанных с меня денежных средств на депозитном счёте отделения судебных приставов — незамедлительно возвратить их по моим банковским реквизитам: ${bankAccountDetails}.</li>
+              <li>Направить копию постановления о прекращении исполнительного производства мне (в том числе в личный кабинет на портале Госуслуг), а также в банки и работодателю.</li>
+            </ol>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-200 text-sm">
+            <p class="font-bold mb-1.5">Приложения:</p>
+            <ol class="list-decimal pl-6 space-y-1">
+              <li>Копия определения мирового судьи от ${cancelDateStr} об отмене судебного приказа по делу № ${caseNumber}.</li>
+              <li>Реквизиты банковского счёта должника для возврата средств с депозита ФССП (при наличии удержаний).</li>
+              <li>Копия паспорта заявителя.</li>
+            </ol>
+          </div>
+
+          <div class="mt-10 flex items-center justify-between text-sm">
+            <div>Дата подачи: <strong>${submitDateStr}</strong></div>
+            <div>Подпись: _______________ / <strong>${shortFio(debtorFio)}</strong> /</div>
+          </div>
+        `;
+      }
+
+      // doc4: Turnaround of execution (Art. 443, 444 GPK RF, para. 35 Plenum VS RF No. 62)
+      return `
+        <div class="doc-header-right mb-8">
+          <p class="font-bold">Мировому судье: ${courtName}</p>
+          <p class="mb-2">Адрес суда: ${courtAddress}</p>
+          <p class="font-semibold">От заявителя (должника): ${debtorFio}</p>
+          <p>Дата и место рождения: ${debtorBirthDate}</p>
+          <p>Адрес проживания: ${debtorAddress}</p>
+          <p>Идентификатор: ${debtorPassport}</p>
+          <p class="mb-2">Телефон: ${debtorPhone}</p>
+          <p class="font-semibold">Заинтересованное лицо (взыскатель): ${creditorName}</p>
+          <p class="mb-2">Адрес: ${creditorAddress}</p>
+          <p class="font-bold">Дело № ${caseNumber}</p>
+        </div>
+
+        <h2 class="text-center font-bold text-lg uppercase tracking-wide mb-6">
+          ЗАЯВЛЕНИЕ<br>
+          <span class="text-sm font-normal normal-case">о повороте исполнения судебного приказа и возврате взысканных денежных средств (в порядке ст. 443, 444 ГПК РФ, п. 35 Постановления Пленума ВС РФ № 62)</span>
+        </h2>
+
+        <div class="space-y-4 text-justify">
+          <p>
+            ${orderDateStr} мировым судьёй (${courtName}) по делу № ${caseNumber} был вынесен судебный приказ о взыскании с меня, ${debtorFio}, в пользу ${creditorName} денежных средств в размере ${debtAmount}.
+          </p>
+          <p>
+            Во исполнение указанного судебного приказа (в рамках исполнительного производства № ${ipNumber} либо при предъявлении приказа в банк) с моих банковских счетов / из заработной платы были принудительно удержаны и перечислены в пользу взыскателя ${creditorName} денежные средства в общей сумме <strong>${withheldAmount}</strong>.
+          </p>
+          <p>
+            Определением мирового судьи (${courtName}) от ${cancelDateStr} по делу № ${caseNumber} судебный приказ от ${orderDateStr} был <strong>отменён</strong> в связи с поступившими от меня возражениями. На момент подачи настоящего заявления производство по делу на основании поданного взыскателем искового заявления судом не возбуждено, однако удержанные денежные средства в размере ${withheldAmount} взыскателем мне в добровольном порядке не возвращены.
+          </p>
+          <p>
+            В соответствии со <strong>ст. 443, ч. 2 ст. 444 Гражданского процессуального кодекса РФ</strong> и разъяснениями <strong>п. 35 Постановления Пленума Верховного Суда РФ от 27.12.2016 № 62</strong>, отмена судебного приказа является самостоятельным основанием для поворота исполнения судебного приказа, если на момент подачи заявления о повороте исполнения судебного приказа или при его рассмотрении судом не возбуждено производство по делу на основании поданного взыскателем искового заявления. Вопрос о повороте исполнения судебного приказа рассматривается мировым судьёй в порядке, предусмотренном ст. 444 ГПК РФ.
+          </p>
+          <p class="font-bold uppercase mt-4">На основании изложенного, руководствуясь ст. 443, 444 ГПК РФ, п. 35 Постановления Пленума ВС РФ от 27.12.2016 № 62, ПРОШУ СУД:</p>
+          <ol class="list-decimal pl-6 space-y-1.5">
+            <li>Произвести поворот исполнения отменённого судебного приказа от ${orderDateStr} по делу № ${caseNumber}.</li>
+            <li>Взыскать с ${creditorName} в пользу ${debtorFio} в порядке поворота исполнения судебного приказа денежные средства, удержанные по отменённому судебному приказу, в размере <strong>${withheldAmount}</strong>.</li>
+            <li>Выдать исполнительный лист на поворот исполнения судебного приказа после вступления определения суда в законную силу.</li>
+          </ol>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-200 text-sm">
+          <p class="font-bold mb-1.5">Приложения:</p>
+          <ol class="list-decimal pl-6 space-y-1">
+            <li>Копия определения мирового судьи от ${cancelDateStr} об отмене судебного приказа по делу № ${caseNumber}.</li>
+            <li>Документы, подтверждающие списание и перечисление денежных средств в размере ${withheldAmount} в пользу взыскателя (банковская выписка по счёту / справка или постановление судебного пристава о распределении денежных средств).</li>
+            <li>Документ, подтверждающий направление копии настоящего заявления заинтересованному лицу (взыскателю).</li>
+            <li>Копия паспорта заявителя.</li>
+          </ol>
+        </div>
+
+        <div class="mt-10 flex items-center justify-between text-sm">
+          <div>Дата подачи: <strong>${submitDateStr}</strong></div>
+          <div>Подпись: _______________ / <strong>${shortFio(debtorFio)}</strong> /</div>
+        </div>
+      `;
+    }
+
+    function updateLegalTip() {
+      const titleEl = document.getElementById('legalTipTitle');
+      const bodyEl = document.getElementById('legalTipBody');
+
+      if (state.activeDoc === 'doc1') {
+        titleEl.textContent = 'Памятка к Документу № 1 (Возражения на судебный приказ)';
+        bodyEl.textContent = 'По ст. 129 ГПК РФ и п. 31 Пленума ВС РФ № 62 судья обязан отменить судебный приказ при самом факте вашего несогласия. Не нужно расписывать в возражениях причины просрочки или признавать долг. Распечатайте в 2 экземплярах (при личной подаче в канцелярию) или отправьте Почтой России заказным письмом с описью вложения.';
+      } else if (state.activeDoc === 'doc2') {
+        titleEl.textContent = 'Памятка к Документу № 2 (Ходатайство о восстановлении срока)';
+        bodyEl.textContent = 'Важно (ч. 2 ст. 129 ГПК РФ в ред. ФЗ № 356-ФЗ): с конца 2024 года взыскатель вправе подать частную жалобу на отмену приказа, если считает, что срок восстановлен без доказательств. Поэтому обязательно приложите реальный подтверждающий документ (скриншот с Госуслуг с датой уведомления от пристава, выписку из банка о списании, договор аренды, справку о командировке) и подайте не позднее 10 рабочих дней с момента, как узнали о приказе!';
+      } else if (state.activeDoc === 'doc3') {
+        titleEl.textContent = 'Памятка к Документу № 3 (Заявление приставу о прекращении ИП)';
+        bodyEl.textContent = 'Исполнительное производство при отмене судебного приказа именно ПРЕКРАЩАЕТСЯ по п. 4 ч. 2 ст. 43 ФЗ № 229-ФЗ (а не оканчивается по ст. 47). По ч. 1 и ч. 2 ст. 44 ФЗ № 229-ФЗ пристав обязан снять все аресты со счетов, отменить запрет на выезд и отменить взыскание исполнительского сбора (7%). Если деньги списаны, но ещё лежат на депозитном счёте ФССП, пристав вернёт их по вашим реквизитам без суда.';
+      } else {
+        titleEl.textContent = 'Памятка к Документу № 4 (Поворот исполнения судебного приказа)';
+        bodyEl.textContent = 'Если деньги уже ушли взыскателю (от пристава или напрямую из банка), вернуть их можно через мирового судью в порядке поворота исполнения (ст. 443, 444 ГПК РФ, п. 35 Пленума ВС РФ № 62). Главное условие п. 35 Пленума № 62: подать заявление о повороте нужно ДО того, как кредитор подаст обычный иск и суд возбудит исковое дело. Госпошлина за подачу этого заявления не платится.';
+      }
+    }
+
+    function updateTabsUI() {
+      const tabs = document.querySelectorAll('.doc-tab-btn');
+      tabs.forEach(btn => {
+        const doc = btn.getAttribute('data-doc');
+        if (doc === state.activeDoc) {
+          btn.className = 'doc-tab-btn flex items-start gap-2.5 p-3 rounded-lg text-left transition bg-[#1b365d] text-white shadow-sm';
+        } else {
+          btn.className = 'doc-tab-btn flex items-start gap-2.5 p-3 rounded-lg text-left transition bg-slate-50 hover:bg-slate-100 text-slate-800';
+        }
+      });
+    }
+
+    function renderAll() {
+      updateGenderButtons();
+      updateCalculatorUI();
+      updateTabsUI();
+      updateLegalTip();
+      document.getElementById('docRenderArea').innerHTML = buildDocHTML(state.activeDoc);
+      document.getElementById('intakePreviewBox').textContent = buildIntakeText();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastBanner');
+      toast.textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3200);
+    }
+
+    function bindEvents() {
+      const fieldMap = [
+        ['calcLearnedDate', 'calcLearnedDate'],
+        ['calcSubmitDate', 'calcSubmitDate'],
+        ['howLearnedSelect', 'howLearned'],
+        ['courtName', 'courtName'],
+        ['courtAddress', 'courtAddress'],
+        ['caseNumber', 'caseNumber'],
+        ['orderDate', 'orderDate'],
+        ['debtAmount', 'debtAmount'],
+        ['debtorFio', 'debtorFio'],
+        ['debtorBirthDate', 'debtorBirthDate'],
+        ['debtorPhone', 'debtorPhone'],
+        ['debtorAddress', 'debtorAddress'],
+        ['debtorPassport', 'debtorPassport'],
+        ['creditorName', 'creditorName'],
+        ['creditorAddress', 'creditorAddress'],
+        ['missedReasonSelect', 'missedReasonSelect'],
+        ['missedReasonCustom', 'missedReasonCustom'],
+        ['cancelOrderDate', 'cancelOrderDate'],
+        ['withheldAmount', 'withheldAmount'],
+        ['fsspDept', 'fsspDept'],
+        ['ipNumber', 'ipNumber'],
+        ['ipDate', 'ipDate'],
+        ['bankAccountDetails', 'bankAccountDetails'],
+        ['intakeTopicSelect', 'intakeTopic'],
+        ['intakeUrgencySelect', 'intakeUrgency'],
+        ['intakePreferredContact', 'intakePreferredContact'],
+        ['intakeComment', 'intakeComment']
+      ];
+
+      fieldMap.forEach(([elemId, stateKey]) => {
+        const el = document.getElementById(elemId);
+        if (!el) return;
+        el.addEventListener('input', (e) => {
+          state[stateKey] = e.target.value;
+          renderAll();
+        });
+        el.addEventListener('change', (e) => {
+          state[stateKey] = e.target.value;
+          renderAll();
+        });
+      });
+
+      document.getElementById('genderMaleBtn').addEventListener('click', () => {
+        state.gender = 'male';
+        renderAll();
+      });
+
+      document.getElementById('genderFemaleBtn').addEventListener('click', () => {
+        state.gender = 'female';
+        renderAll();
+      });
+
+      document.querySelectorAll('.doc-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          state.activeDoc = btn.getAttribute('data-doc');
+          renderAll();
+        });
+      });
+
+      document.getElementById('btnCopyDoc').addEventListener('click', () => {
+        const text = document.getElementById('docRenderArea').innerText;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast('Текст документа скопирован в буфер обмена!');
+          }).catch(() => {
+            fallbackCopy(text);
+          });
+        } else {
+          fallbackCopy(text);
+        }
+      });
+
+      document.getElementById('btnDownloadTxt').addEventListener('click', () => {
+        const text = document.getElementById('docRenderArea').innerText;
+        const filenames = {
+          doc1: '1_Vozrazheniya_na_sudebnyj_prikaz.txt',
+          doc2: '2_Hodataystvo_o_vosstanovlenii_sroka.txt',
+          doc3: '3_Zayavlenie_pristavu_o_prekrashenii_IP.txt',
+          doc4: '4_Zayavlenie_o_povorote_ispolneniya_prikaza.txt'
+        };
+        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filenames[state.activeDoc] || 'document.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('Файл успешно сформирован и скачан!');
+      });
+
+      document.getElementById('btnPrintDoc').addEventListener('click', () => {
+        window.print();
+      });
+
+      document.getElementById('btnCopyIntake').addEventListener('click', () => {
+        const text = buildIntakeText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast('Карточка заявки скопирована! Вставьте её в чат/бот юриста.');
+          }).catch(() => {
+            fallbackCopy(text);
+          });
+        } else {
+          fallbackCopy(text);
+        }
+      });
+
+      document.getElementById('btnOpenTgBot').addEventListener('click', () => {
+        const text = buildIntakeText();
+        // Auto-copy text first so user can paste it immediately in the bot
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).catch(() => {});
+        }
+        showToast('Анкета скопирована! Переходим в Telegram-бот...');
+        // Default target bot or fallback prompt
+        const botUsername = 'Shafikov_Law_Bot';
+        window.open(`https://t.me/${botUsername}`, '_blank');
+      });
+
+      document.getElementById('btnDownloadIntake').addEventListener('click', () => {
+        const text = buildIntakeText();
+        const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Zayavka_yuristu_Shafikov_R_M.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('Анкета заявки сохранена в файл!');
+      });
+
+      document.getElementById('btnClearForm').addEventListener('click', () => {
+        Object.keys(state).forEach(k => {
+          if (!['activeDoc', 'gender', 'howLearned', 'missedReasonSelect', 'intakeTopic', 'intakeUrgency'].includes(k)) {
+            state[k] = '';
+          }
+        });
+        syncInputsFromState();
+        renderAll();
+        showToast('Все текстовые поля очищены. Введите ваши данные.');
+      });
+
+      document.getElementById('btnFillDemo').addEventListener('click', () => {
+        state.calcLearnedDate = '2026-10-19';
+        state.calcSubmitDate = '2026-10-26';
+        state.howLearned = 'post_in_time';
+        state.courtName = 'Судебный участок № 5 Центрального судебного района г. Примерска';
+        state.courtAddress = '450000, г. Примерск, ул. Судебная, д. 10';
+        state.caseNumber = '2-1245/2026';
+        state.orderDate = '2026-10-05';
+        state.debtAmount = '48 500 руб. 00 коп.';
+        state.debtorFio = 'Иванов Иван Иванович';
+        state.debtorBirthDate = '15.04.1988, гор. Примерск';
+        state.debtorPhone = '+7 (900) 123-45-67';
+        state.debtorAddress = '450000, г. Примерск, ул. Ленина, д. 15, кв. 42';
+        state.debtorPassport = 'паспорт серия 80 08 № 123456, ИНН 027400000000';
+        state.creditorName = 'ООО ПКО «Пример-Финанс»';
+        state.creditorAddress = '125009, г. Москва, ул. Образцовая, д. 12, оф. 301, ИНН 7701234567';
+        state.missedReasonSelect = 'other_address';
+        state.missedReasonCustom = 'копия договора найма жилого помещения от 10.01.2026, скриншот уведомления с портала Госуслуг о возбуждении исполнительного производства';
+        state.cancelOrderDate = '2026-10-27';
+        state.withheldAmount = '14 200 руб. 00 коп.';
+        state.fsspDept = 'ОСП по Центральному району г. Примерска ГУФССП России';
+        state.ipNumber = '98765/26/02001-ИП';
+        state.ipDate = '2026-10-16';
+        state.bankAccountDetails = 'р/с 40817810500001234567 в ПАО «Сбербанк», БИК 044525225';
+        syncInputsFromState();
+        renderAll();
+        showToast('Демонстрационный пример загружен.');
+      });
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('Текст документа скопирован в буфер обмена!');
+      } catch (err) {
+        showToast('Не удалось скопировать автоматически — выделите текст на листе.');
+      }
+      document.body.removeChild(ta);
+    }
+
+    
+    // Access PIN-code logic
+    const VALID_PIN = '2026'; // PIN-код доступа из файла ZAKRYTYJ_DOSTUP_K_KONSTRUKTORU.txt
+
+    function checkStoredPin() {
+      try {
+        if (localStorage.getItem('shafikov_constructor_unlocked') === 'true') {
+          const modal = document.getElementById('pinGateModal');
+          if (modal) modal.style.display = 'none';
+        }
+      } catch (e) {}
+    }
+
+    function verifyPin() {
+      const input = document.getElementById('pinInput');
+      const errorMsg = document.getElementById('pinErrorMsg');
+      const modal = document.getElementById('pinGateModal');
+      if (input.value.trim() === VALID_PIN) {
+        try {
+          localStorage.setItem('shafikov_constructor_unlocked', 'true');
+        } catch (e) {}
+        modal.style.display = 'none';
+        showToast('Доступ открыт! Все функции конструктора активны.');
+      } else {
+        errorMsg.classList.remove('hidden');
+        input.classList.add('border-rose-500');
+        input.value = '';
+        input.focus();
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      checkStoredPin();
+      document.getElementById('btnUnlockPin').addEventListener('click', verifyPin);
+      document.getElementById('pinInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') verifyPin(); });
+      syncInputsFromState();
+      bindEvents();
+      renderAll();
+    });
+  </script>
+</body>
+</html>
